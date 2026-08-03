@@ -14,11 +14,12 @@ services:
       - --entrypoints.websecure.address=:443
       - --providers.file.filename=/etc/traefik/dynamic.yaml
       - --providers.file.watch=true
+      - --log.level=DEBUG
     labels:
       - traefik.enable=true
       - traefik.http.routers.proxy.rule=Host(`proxy.${DOMAIN_ZONE}`)
       - traefik.http.routers.proxy.entrypoints=web,websecure
-      - traefik.http.routers.proxy.tls=true
+      - traefik.http.routers.proxy.tls=${HTTPS_ENABLED}
       - traefik.http.services.proxy.loadbalancer.server.port=8080
     ports:
       - "80:80"
@@ -27,6 +28,22 @@ services:
       - ./dynamic.yaml:/etc/traefik/dynamic.yaml:ro
       - ./certs:/etc/traefik/certs:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  portainer:
+    image: portainer/portainer-ce
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portainer.rule=Host(`portainer.${DOMAIN_ZONE}`)
+      - traefik.http.routers.portainer.entrypoints=web,websecure
+      - traefik.http.routers.portainer.tls=${HTTPS_ENABLED}
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
 
 networks:
   proxy:

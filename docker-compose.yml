@@ -72,8 +72,24 @@ services:
       - traefik.http.routers.mailpit.tls=${HTTPS_ENABLED}
       - traefik.http.services.mailpit.loadbalancer.server.port=8025
 
+  redisinsight:
+    image: redis/redisinsight
+    restart: always
+    networks:
+      - proxy
+    volumes:
+      - redisinsight-data:/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.redisinsight.rule=Host(`redis.${DOMAIN_ZONE:-localhost}`)
+      - traefik.http.routers.redisinsight.entrypoints=web,websecure
+      - traefik.http.routers.redisinsight.tls=${HTTPS_ENABLED}
+      - traefik.http.services.redisinsight.loadbalancer.server.port=5540
 
 networks:
   proxy:
     name: proxy
     driver: bridge
+
+volumes:
+  redisinsight-data:

@@ -7,12 +7,11 @@ This project contains a composition of services for local development.
 The links in this instruction are set to default. If you have changed the settings, you need to make the appropriate
 adjustments.
 
-* [Proxy (traefik)](http://proxy.localhost).
-* [Docker management admin panel (portainer)](http://portainer.localhost).
-* [Database management admin panel (pgadmin)](http://pgadmin.localhost).
-* [Cache management admin panel (redisinsight)](http://redis.localhost).
-* [Queue management admin panel (rabbitmq)](http://queue.localhost).
-* [SMTP server for testing and viewing emails (mailpit)](http://mails.localhost).
+* [Proxy (traefik)](https://proxy.localhost).
+* [Docker management admin panel (portainer)](https://portainer.localhost).
+* [Database management admin panel (pgadmin)](https://pgadmin.localhost).
+* [Redis management admin panel (redisinsight)](https://redis.localhost).
+* [SMTP server for testing and viewing emails (mailpit)](https://mails.localhost).
 
 ## 🚀 Deployment
 
@@ -55,11 +54,6 @@ Upon first login, you need to add the necessary database servers and configure t
 
 Upon first login, you need to add the necessary database servers and configure them as needed.
 [More about Redisinsight](https://redis.io/insight/).
-
-## 🛠️ Rabbitmq
-
-Upon first login, you need to add the necessary users and configure them as needed.
-[More about Rabbitmq](https://www.rabbitmq.com/docs).
 
 ## 🛠️ Mailpit
 

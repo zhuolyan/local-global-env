@@ -28,7 +28,7 @@ adjustments.
    cp .env.example .env
    ```
 4. **(If necessary) Modify settings:**
-   Ensure that all settings have the required values.
+   Ensure that all settings have the required values. Copy the certificates to the certs folder if https is required.
 5. **Up the environment.**
    ```bash
    docker compose up -d

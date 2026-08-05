@@ -47,8 +47,8 @@ Upon first login, you need to set a password for the administrator role and conf
 
 Upon first login, you need to add the necessary database servers and configure them as needed. Default credentials:
 
-* **Логін:** admin@localhost
-* **Пароль:** Admin1234
+* **Login:** admin@localhost
+* **Password:** Admin1234
 
 ## 🛠️ Redisinsight
 

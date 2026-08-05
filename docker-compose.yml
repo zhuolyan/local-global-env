@@ -32,6 +32,7 @@ services:
   portainer:
     image: portainer/portainer-ce
     restart: always
+    command: -H unix:///var/run/docker.sock --http-enabled
     env_file:
       - .env
     networks:

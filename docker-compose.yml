@@ -32,13 +32,14 @@ services:
   portainer:
     image: portainer/portainer-ce
     restart: always
-    command: -H unix:///var/run/docker.sock --http-enabled
+    command: -H unix:///var/run/docker.sock --http-enabled --no-setup-token
     env_file:
       - .env
     networks:
       - proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
     labels:
       - traefik.enable=true
       - traefik.http.routers.portainer.rule=Host(`portainer.${DOMAIN_ZONE}`)
@@ -94,3 +95,4 @@ networks:
 
 volumes:
   redisinsight-data:
+  portainer_data:
